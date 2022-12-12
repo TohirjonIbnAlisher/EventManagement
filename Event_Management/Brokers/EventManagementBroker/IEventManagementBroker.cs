@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Event_Management.Models.EventManagementModels;
+using System.Data.SqlClient;
 
 namespace Event_Management.Brokers.EventManagementBroker
 {
-    internal interface IEventManagementBroker
+    public partial interface IEventManagementBroker
     {
+        public Task Registered(Users user);
+
     }
 }

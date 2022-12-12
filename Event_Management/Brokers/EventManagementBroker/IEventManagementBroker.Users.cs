@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Event_Management.Brokers.EventManagementBroker
 {
-    public interface IEventManagementBroker
+    public partial interface IEventManagementBroker
     {
+        public Task RegisteredSeat(int room_id, int seatNumber);
+
     }
 }

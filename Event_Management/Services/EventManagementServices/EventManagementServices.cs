@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Event_Management.Services.EventManagementServices
 {
-    internal class EventManagerService
+    public partial class EventManagementServices : IEventManagementServices
     {
+
     }
 }

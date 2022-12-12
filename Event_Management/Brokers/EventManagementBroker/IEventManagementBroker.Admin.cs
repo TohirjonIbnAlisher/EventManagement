@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Event_Management.Models.EventManagementModels;
 
 namespace Event_Management.Brokers.EventManagementBroker
 {
-    public interface IEventManagementBroker
+    public partial interface IEventManagementBroker
     {
+        public Task InsertNewRoom(Room room);
+        public Task UpdateRoom(Room room);
+        public Task DeleteRoom(int numberRoom);
+
+        public Task<List<Room>> SelectAllRoom();
+
     }
 }

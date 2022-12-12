@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Event_Management.Models.EventManagementModels;
 
 namespace Event_Management.Brokers.EventManagementBroker
 {
-    public interface IEventManagementBroker
+    public partial interface IEventManagementBroker
     {
+        public Task<List<Room>> SelectAllEmptyRooms();
+
+        public Task<List<(int, bool)>> StatisticsOfSeat();
+
+
     }
 }

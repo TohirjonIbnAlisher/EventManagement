@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Event_Management.Models.EventManagementModels
 {
-    internal class Room
+    public class Room
     {
+        public Room(string name,int numberRoom,int capacity)
+        {
+            Name= name;
+            NumberRoom= numberRoom;
+            Capacity= capacity;
+        }
+
+        public Room(string name, int numberRoom, int capacity,bool isOrdered)
+        {
+            Name = name;
+            NumberRoom = numberRoom;
+            Capacity = capacity;
+            IsOrdered = isOrdered;
+        }
+
+        public string Name { get;}
+        public int NumberRoom { get;}
+        public int Capacity { get;}
+        public bool IsOrdered { get;}
     }
 }
