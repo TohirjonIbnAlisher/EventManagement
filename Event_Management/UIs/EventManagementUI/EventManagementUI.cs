@@ -12,6 +12,16 @@ namespace Event_Management.UIs.EventManagementUI
             this.eventManagementService = eventManagementService;   
         }
 
+        private async Task Menu()
+        {
+            Console.WriteLine("1.Admin bo'lib kirish\n" +
+                "2.Company\n" +
+                "3.User");
+
+            int key = int.Parse(Console.ReadLine());    
+
+            switch()
+        }
 
     }
 }
