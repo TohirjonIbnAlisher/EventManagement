@@ -14,7 +14,7 @@ namespace Event_Management.Brokers.EventManagementBroker
             return new SqlConnection(connectionString);
         }
 
-        public async Task RegisteredPrivate(Users user)
+        public async Task Registered(Users user)
         {
             using var connection = await GetConnection();
             using var command = connection.CreateCommand();
