@@ -1,1 +1,149 @@
 
+create database EventManagement
+
+use EventManagement
+
+create table AdminEventManagement
+(
+	id int identity primary key,
+	adminUserName varchar(30) not null,
+	password varchar(30) not null,
+	tellNumber varchar(15)
+)
+
+create table Room
+(
+	id int identity primary key,
+	numberRoom int,
+	name varchar(30),
+	capacity int not null,
+	isOrdered bit default 0
+)
+
+create  table Seat
+(
+	numberSeat int primary key,
+	isOrdered bit default 0,
+	room_id int references Room(id)
+	on delete cascade
+	on update cascade
+)
+
+create table Users
+(
+	id int identity primary key,
+	adminUserName varchar(30) not null,
+	password varchar(30) not null,
+	tellNumber varchar(15),
+	roleUser varchar(20)
+)
+
+create table Event 
+(
+id int identity primary key,
+name varchar(30),
+start_at datetime not null,
+end_at datetime not null,
+room_id int references Room(id),
+company_id int references users(id)
+on delete cascade
+on update cascade
+)
+
+
+create table OrderRoom
+(
+	id int identity primary key,
+	event_id int references Event(id),
+	room_id int references Room(id),
+)
+
+create table OrderSeat
+(
+	id int identity primary key,
+	user_id int references Users(id),
+	seat_id int references Seat(numberSeat),
+)
+
+create procedure InsertRoom
+@name nvarchar(30),@numberRoom int,@capacity int
+as 
+begin
+insert into Room(name,numberRoom,capacity) values (@name,@numberRoom,@capacity)
+end
+
+
+create procedure UpdateRoom
+@name nvarchar(30),@numberRoom int,@capacity int,@id int
+as
+begin
+update Room
+set name=@name,numberRoom=@numberRoom,capacity=@capacity
+where id = @id
+end
+
+
+create procedure DeleteRoom
+@id int
+as
+begin
+delete from Room
+where id = @id
+end
+
+
+create procedure SelectAllRoom
+as
+begin
+
+select * from Room
+
+end
+
+
+create procedure RegisterUser
+@name nvarchar,@password nvarchar(30),@tell nvarchar(15),@role nvarchar(30)
+
+as 
+begin
+insert into Users values(@name,@password,@tell,@role)
+
+end
+
+
+create procedure SelectAllEvent
+as
+begin
+
+select * from Event
+end
+
+
+create procedure SelectAllEmptyRoom
+@isOrdered bit
+as
+begin
+select * from Room where isOrdered = @isOrdered
+end
+
+
+create procedure SelectAllSeat
+@idRoom int
+as
+begin
+select * from Seat where room_id = @idRoom
+end
+
+create procedure RegisteredSeat
+@room_id int,@numberSeat int
+as
+begin
+update Seat 
+set isOrdered = 1
+where room_id = @room_id and numberSeat=@numberSeat
+
+end
+
+
+
+
